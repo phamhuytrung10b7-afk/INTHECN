@@ -1,0 +1,6 @@
+{
+  "name": "Trình Tạo Thẻ Nhân Viên Sunhouse",
+  "description": "Ứng dụng web tự động tạo thẻ đeo nhân viên chuẩn CR80 (85x55mm) theo mẫu Nhà Máy Sunhouse, hỗ trợ xuất file in PDF A4 và ảnh thẻ ZIP chất lượng cao.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
