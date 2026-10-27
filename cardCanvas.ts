@@ -197,6 +197,7 @@ export async function renderCardToCanvas(
   // - Kho: Màu cam (#E87722)
   // - Lắp ráp: Màu xanh nước biển (#0072CE)
   // - Cơ khí: Màu xanh lá cây (#16A34A)
+  // - QC (KCS/Chất lượng): Màu vàng (#EAB308)
   const areaColor = getAreaColor(employee.khuVuc, config.accentColor || '#E87722');
   const accentBandHeight = 78;
   const bandTopY = CARD_HEIGHT - footerHeight - accentBandHeight; // 650 - 46 - 78 = 526

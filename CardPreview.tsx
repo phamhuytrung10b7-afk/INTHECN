@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
-import { Employee, CardDesignConfig } from './types';
+import { Employee, CardDesignConfig, getAreaColor } from './types';
 import { renderCardToCanvas } from './cardCanvas';
 
 interface CardPreviewProps {
@@ -195,12 +195,7 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
             <span
               className="w-2.5 h-2.5 rounded-full shrink-0"
               style={{
-                backgroundColor:
-                  (employee.khuVuc || '').toLowerCase().includes('lắp ráp')
-                    ? '#0072CE'
-                    : (employee.khuVuc || '').toLowerCase().includes('cơ khí')
-                    ? '#16A34A'
-                    : '#E87722',
+                backgroundColor: getAreaColor(employee.khuVuc, config.accentColor),
               }}
             />
             {employee.khuVuc || 'Kho'}

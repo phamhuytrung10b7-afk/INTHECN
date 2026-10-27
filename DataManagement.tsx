@@ -90,7 +90,7 @@ export const DataManagement: React.FC<DataManagementProps> = ({
     const wsData = [
       ['STT', 'Mã nhân viên', 'Họ và tên', 'Vị trí làm việc', 'Khu vực làm việc', 'Tên file ảnh'],
       [1, '600000478', 'Nguyễn Khánh Quy', 'Kỹ thuật viên quản lý kho', 'Kho', '600000478.jpg'],
-      [2, '600000512', 'Trần Thị Mai', 'Kiểm soát chất lượng (QC)', 'Lắp ráp', '600000512.jpg'],
+      [2, '600000512', 'Trần Thị Mai', 'Kiểm soát chất lượng (QC)', 'QC', '600000512.jpg'],
       [3, '600000523', 'Lê Văn Hùng', 'Vận hành máy dập nhôm', 'Cơ khí', '600000523.jpg'],
       [4, '600000589', 'Phạm Hoàng Nam', 'Tổ trưởng tổ cơ điện', 'Cơ khí', '600000589.jpg'],
       [5, '600000601', 'Võ Thị Kim Cúc', 'Kỹ thuật viên đóng gói chuyền', 'Lắp ráp', '600000601.jpg'],
@@ -105,7 +105,7 @@ export const DataManagement: React.FC<DataManagementProps> = ({
   const handleAddEmployee = () => {
     const nextStt = employees.length + 1;
     const nextCode = `600000${String(nextStt).padStart(3, '0')}`;
-    const areas = ['Kho', 'Lắp ráp', 'Cơ khí'];
+    const areas = ['Kho', 'Lắp ráp', 'Cơ khí', 'QC'];
     const assignedArea = areas[(nextStt - 1) % areas.length];
 
     const newEmp: Employee = {
@@ -232,7 +232,7 @@ export const DataManagement: React.FC<DataManagementProps> = ({
       {/* Area Legend Bar */}
       <div className="mt-3 p-2.5 bg-slate-50 border border-slate-200 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs">
         <span className="font-semibold text-slate-700">Phân loại màu thẻ theo khu vực làm việc:</span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center flex-wrap gap-2 sm:gap-3">
           <span className="inline-flex items-center gap-1 text-[11px] font-medium text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-[#E87722]"></span>
             Kho: Màu Cam
@@ -244,6 +244,10 @@ export const DataManagement: React.FC<DataManagementProps> = ({
           <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-[#16A34A]"></span>
             Cơ khí: Xanh lá cây
+          </span>
+          <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-900 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200">
+            <span className="w-2 h-2 rounded-full bg-[#EAB308]"></span>
+            QC: Màu vàng
           </span>
         </div>
       </div>
@@ -281,7 +285,10 @@ export const DataManagement: React.FC<DataManagementProps> = ({
               const area = (emp.khuVuc || 'Kho').toLowerCase();
               let badgeClass = 'bg-orange-100 text-orange-800 border-orange-200';
               let dotColor = '#E87722';
-              if (area.includes('lắp ráp') || area.includes('lap rap')) {
+              if (area.includes('qc') || area.includes('kcs') || area.includes('chất lượng') || area.includes('quality')) {
+                badgeClass = 'bg-amber-100 text-amber-900 border-amber-300';
+                dotColor = '#EAB308';
+              } else if (area.includes('lắp ráp') || area.includes('lap rap')) {
                 badgeClass = 'bg-blue-100 text-blue-800 border-blue-200';
                 dotColor = '#0072CE';
               } else if (area.includes('cơ khí') || area.includes('co khi')) {
@@ -389,6 +396,7 @@ export const DataManagement: React.FC<DataManagementProps> = ({
                 <option value="Kho">Kho (Màu Cam #E87722)</option>
                 <option value="Lắp ráp">Lắp ráp (Màu Lam #0072CE)</option>
                 <option value="Cơ khí">Cơ khí (Màu Lục #16A34A)</option>
+                <option value="QC">QC (Màu Vàng #EAB308)</option>
               </select>
             </div>
             <div>

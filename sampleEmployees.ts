@@ -29,7 +29,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     maNV: '600000512',
     hoTen: 'Trần Thị Mai',
     viTri: 'Kiểm soát chất lượng (QC)',
-    khuVuc: 'Lắp ráp',
+    khuVuc: 'QC',
     tenFileAnh: '600000512.jpg',
     avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
   },
